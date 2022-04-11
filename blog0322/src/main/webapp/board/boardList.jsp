@@ -13,8 +13,8 @@
 	if(request.getParameter("currentPage") != null) { // 이전, 다음 링크를 통해서 들어왔다면
 		 currentPage = Integer.parseInt(request.getParameter("currentPage"));
 	}
-	System.out.println(currentPage + "<-- currentPage");
-	
+	System.out.println(currentPage + "<-- currentPage"); // 디버깅
+	                  
 	
 	// 이전, 다음링크에서 null값을 넘기는 것이 불가능해 null -> 공백으로 치환해서 코드를 처리 
 	String categoryName = "";
@@ -112,7 +112,7 @@
 		ResultSet totalRowRs = totalRowStmt.executeQuery();
 		if(totalRowRs.next()) {
 			totalRow = totalRowRs.getInt("cnt");
-			System.out.println(totalRow+" <-- totalRow(1000)");
+			System.out.println(totalRow+" <-- totalRow");
 		}
 
 		
@@ -155,15 +155,16 @@
 			%>
 					
 					<li class="list-group-item list-group-item-action">
-						<a href="<%=request.getContextPath()%>/boardList.jsp?categoryName=<%=m.get("categoryName")%>"><%=m.get("categoryName")%>&nbsp;<span class="badge badge-info"><%=m.get("cnt")%></span></a>
+						<a href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=m.get("categoryName")%>"><%=m.get("categoryName")%>&nbsp;<span class="badge badge-info"><%=m.get("cnt")%></span></a>
 					</li>
 					
 			<%		
 				}
 			%>
+		
 		</ul>
 		
-	</div>
+	</div>	
 	</div>
 	<!-- 게시글 리스트 -->
 	<div class="col-sm-9 bg-light">
@@ -202,7 +203,7 @@
 		%>
 				<ul class="pagination">
 				<li class="page-item">
-				<a href="<%=request.getContextPath()%>/boardList.jsp?currentPage=<%=currentPage-1%>&categoryName=<%=categoryName%>" class="btn btn-info btn-sm" role="button">이전</a>
+				<a href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage-1%>&categoryName=<%=categoryName%>" class="btn btn-info btn-sm" role="button">이전</a>
 				</li></ul>
 				
 		<%	
@@ -224,7 +225,7 @@
 		%>
 				<ul class="pagination">
 				<li class="page-item">
-				<a href="<%=request.getContextPath()%>/boardList.jsp?currentPage=<%=currentPage+1%>&categoryName=<%=categoryName%>" class="btn btn-info btn-sm" role="button">다음</a>
+				<a href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage+1%>&categoryName=<%=categoryName%>" class="btn btn-info btn-sm" role="button">다음</a>
 				</li></ul>
 		<%		
 			}
