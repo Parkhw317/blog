@@ -5,12 +5,13 @@
 <%@ page import = "dao.*" %>
 <%
 	
-	request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("utf-8"); // 한글 꺠지지 않게 인코딩
 
-	String categoryName = request.getParameter("categoryName");
+	String categoryName = request.getParameter("categoryName"); // categoryName 변수선언
 	
-	BoardDao boardDao = new BoardDao();
+	BoardDao boardDao = new BoardDao(); // boardDao 객체 생성
 	
+	// boardDao클래스의 selectBoardCategoryName메소드에 categoryName을 파라미터로 넣어서 실행한 결과를 ArrayList에 넣어줌	
 	ArrayList<String> list = boardDao.selectBoardCategoryName(categoryName);
  	
 	
