@@ -13,34 +13,8 @@
 	
 	// boardDao클래스의 selectBoardCategoryName메소드에 categoryName을 파라미터로 넣어서 실행한 결과를 ArrayList에 넣어줌	
 	ArrayList<String> list = boardDao.selectBoardCategoryName(categoryName);
- 	
-	
-	
-	/*
-	
-----------------------------------------
 
 	
-
-	Class.forName("org.mariadb.jdbc.Driver");
-   Connection conn = null;
-   String dburl = "jdbc:mariadb://localhost:3306/blog";
-   String dbuser = "root";
-   String dbpw = "java1234";
-   conn = DriverManager.getConnection(dburl, dbuser, dbpw);
-   String sql = "SELECT category_name categoryName FROM category ORDER BY category_name ASC";
-   PreparedStatement stmt = conn.prepareStatement(sql);
-   ResultSet rs = stmt.executeQuery();
-  	ArrayList<String> list = new ArrayList<String>();
-  	 while(rs.next()) {
-		String b = new String();
-	    list.add(rs.getString("categoryName"));
-  	 }
-   
-   conn.close();
-   
-   */
-   
 %>
 <!DOCTYPE html>
 <html>

@@ -4,7 +4,7 @@
 <%@ page import = "dao.*" %>
 <%
 
-	request.setCharacterEncoding("utf-8"); // 한글 꺠지지 않게 인코등
+	request.setCharacterEncoding("utf-8"); // 한글 꺠지지 않게 인코딩
 	
 	BoardDao boardDao = new BoardDao(); // boardDao 객체 생성
 
@@ -33,50 +33,6 @@
 	}
 
 %>
-<% 
 
-	// 이전 코딩
-	
-	/* 
-	request.setCharacterEncoding("utf-8");
-	
-	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-
-	
-	Board board = new Board();
-	board.boardNo = boardNo;
-
-	
-	Class.forName("org.mariadb.jdbc.Driver");
-	Connection conn = null;
-	String dburl = "jdbc:mariadb://localhost:3306/blog";
-	String dbuser = "root";
-	String dbpw = "java1234";
-	conn = DriverManager.getConnection(dburl, dbuser, dbpw);
-	System.out.println(conn + "◀◀◀◀◀ 마리아DB 서버연결성공");
-	
-	String boardDeleteSql = "delete from board where board_No=?";
-	PreparedStatement boardDeleteStmt = conn.prepareStatement(boardDeleteSql);
-	boardDeleteStmt.setInt(1, board.boardNo);
-
-	
-	
-	int row = boardDeleteStmt.executeUpdate();
-	
-	if (row == 0) {
-		response.sendRedirect("./deleteBoardForm.jsp?boardNo="+board.boardNo);
-		System.out.println("◁◁◁◁◁ 삭제 실패");
-	} else if (row == 1) {
-		response.sendRedirect("./boardList.jsp");
-		System.out.println("◀◀◀◀ 삭제 성공");
-	} else {
-		System.out.println("-----Error-----");
-	}
-	
-	
-	conn.close();
-
-	*/
-%>
 
 
