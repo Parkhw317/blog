@@ -25,19 +25,19 @@
 	
 	// 변수 선언 후 받아온 값 넣어줌
 	Guestbook guestbook = new Guestbook();
-	guestbook.guestbookContent = guestbookContent;
-	guestbook.guestbookNo = guestbookNo;
-	guestbook.guestbookPw = guestbookPw;
-	guestbook.writer = writer;
+	guestbook.setGuestbookContent(guestbookContent);
+	guestbook.setGuestbookNo(guestbookNo);
+	guestbook.setGuestbookPw(guestbookPw);
+	guestbook.setWriter(writer);
 	
 
 	
 	int row = 0; 
-	row = guestbookDao.updateGuestbook(guestbook); // GuestbookDao에 있는 updateGuestbook 메소드 실행
+	row = guestbookDao.updateGuestbook(guestbook); //  guestbookDao클래스의 updateGuestbook메소드에 guestbook를 마라미터로 넣어줌
 	
 	if(row == 0) { // 수정된 행이 0개라면 수정 실패
 		System.out.println("수정 실패");
-		response.sendRedirect(request.getContextPath()+"/guestbook/updateGuestbookForm.jsp?guestbookNo=" + guestbook.guestbookNo);
+		response.sendRedirect(request.getContextPath()+"/guestbook/updateGuestbookForm.jsp?guestbookNo=" + guestbook.getGuestbookNo());
 	} else if(row == 1) { // 수정된 행이 1개라면 수정 성공
 		System.out.println("수정 성공");
 		response.sendRedirect(request.getContextPath()+"/guestbook/guestbookList.jsp");
