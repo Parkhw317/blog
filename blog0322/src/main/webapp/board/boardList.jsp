@@ -101,7 +101,7 @@
 		ResultSet boardRs = boardStmt.executeQuery(); // 쿼리문 실행
 		ArrayList<Board> boardList = new ArrayList<Board>();
 		while(boardRs.next()) { // sql문 결과값으로 가져온 categoryName값에 대해 list에 추가(while문 안에 있으니 false값 나올떄까지 계속 반복)
-			Board b = new Board();
+			Board b = new Board(); 
 			b.setBoardNo(boardRs.getInt("boardNo")); // boardNo값 set
 			b.setCategoryName(boardRs.getString("categoryName")); // categoryName값 set
 			b.setBoardTitle(boardRs.getString("boardTitle")); // boardName값 set
