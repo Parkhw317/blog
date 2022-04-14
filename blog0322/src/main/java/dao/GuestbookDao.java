@@ -235,7 +235,7 @@ public class GuestbookDao {
 		stmt.setInt(1, beginRow); // beginRow 값 set
 		stmt.setInt(2, rowPerPage); // rowPerPage 값 set
 		
-		rs = stmt.executeQuery();// 쿼리문 실행
+		rs = stmt.executeQuery(); // 쿼리문 실행
 		// 데이터베이스 로직 끝
 		
 		// 데이터 변환(가공)
