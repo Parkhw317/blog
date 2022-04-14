@@ -23,14 +23,16 @@
 	--> request를 단순하게 사용하게 해주는 cos.jar같은 API(외부라이브리)를 사용하자.
 	*/
 
-	request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("utf-8"); // 한글 깨지지 않게 인코딩
+	
 	String path = application.getRealPath("upload"); // application변수 톰켓을 가르키는 변수
 	// DefaultFileRenamePolicy rp = new DefaultFileRenamePolicy();
+	
 	MultipartRequest multiReq = new MultipartRequest(request, path, 1024*1024*100, "utf-8", new DefaultFileRenamePolicy());
 	// 2^10 byte = 1kbyte 1024 byte = 1kbte
 	// 2^10 kbyte = 1mbtee
 	// 100 mbyte = 1024*1024*100 byte = 104857600 byte 곱셈을 계산해서 코딩하면 가독성이 떨어진다 24*65*60
-	
+
 	String photoPw = multiReq.getParameter("photoPw");
 	String writer = multiReq.getParameter("writer");
 	
@@ -39,6 +41,7 @@
 	String photoName = multiReq.getFilesystemName("photo"); // new DefaultFileRenamePolicy()객체를 통해 변경된 이름
 	String photoType = multiReq.getContentType("photo");
 	
+	// 디버깅
 	System.out.println(photoPw + "<-- photoPw");
 	System.out.println(writer + "<-- writer");
 	System.out.println(photoOriginalName + "<-- String photoOriginalName");
@@ -52,11 +55,11 @@
 		System.out.println("db고고!");
 		PhotoDao photoDao = new PhotoDao();
 		Photo photo = new Photo();
-		photo.photoName = photoName;
-		photo.photoOriginalName = photoOriginalName;
-		photo.photoType = photoType;
-		photo.photoPw = photoPw;
-		photo.writer = writer;
+		photo.setPhotoName(photoName);
+		photo.setPhotoOriginalName(photoOriginalName);
+		photo.setPhotoType(photoType);
+		photo.setPhotoPw(photoPw);
+		photo.setWriter(writer);
 		
 		photoDao.insertPhoto(photo); // 메서드 구현
 		response.sendRedirect(request.getContextPath()+"/photo/photoList.jsp");
