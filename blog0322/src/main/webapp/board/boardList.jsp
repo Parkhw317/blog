@@ -154,8 +154,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-
-
 	<!-- category별 게시글 링크 메뉴 -->
 	
 	<div class="row">
@@ -163,9 +161,17 @@
 	<div class="container" >
 		<ul class="list-group">
 			
-			<div style= "text-align : center;">
+			<div style= "text-align : center">
 			<br><h2>Category</h2><br>		
 			</div>
+			
+			<!-- 메인 메뉴 시작-->
+			<div style= "text-align : center">
+			<jsp:include page="/inc/upMenu.jsp" ></jsp:include><br>
+			</div>
+			<!-- include시 컨텍스명(프로젝트)을 명시하지 않는다. -->	
+			<!-- 메인 메뉴 끝 -->	
+				
 				
 			<%
 				for(HashMap<String, Object> m : categoryList) {
@@ -253,7 +259,5 @@
 	</div>
 	</div>
 	</div>
-
 </body>
 </html>
-
