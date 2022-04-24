@@ -90,7 +90,6 @@
 			boardStmt.setInt(1, beginRow); // 쿼리문 ? 값에 대해 beginRow값으로 set 해주기
 			boardStmt.setInt(2, rowPerPage); // 쿼리문 ? 값에 대해 rowPerPage값으로 set해주기
 			
-			
 		} else { // 만약 그 외의 경우 boardNo, categoryName, boardTitle, createDate 값을 board중 지정한 categoryName값에 대해 create_date 내림차순으로 LIMIT해서 select함
 			boardSql = "SELECT board_no boardNo, category_name categoryName, board_title boardTitle, create_date createDate FROM board WHERE category_name =? ORDER BY create_date DESC LIMIT ?, ?";
 			boardStmt = conn.prepareStatement(boardSql); // select sql문 전송
@@ -101,7 +100,7 @@
 		ResultSet boardRs = boardStmt.executeQuery(); // 쿼리문 실행
 		ArrayList<Board> boardList = new ArrayList<Board>();
 		while(boardRs.next()) { // sql문 결과값으로 가져온 categoryName값에 대해 list에 추가(while문 안에 있으니 false값 나올떄까지 계속 반복)
-			Board b = new Board(); 
+			Board b = new Board();
 			b.setBoardNo(boardRs.getInt("boardNo")); // boardNo값 set
 			b.setCategoryName(boardRs.getString("categoryName")); // categoryName값 set
 			b.setBoardTitle(boardRs.getString("boardTitle")); // boardName값 set
@@ -109,30 +108,18 @@
 			boardList.add(b); // list에 add
 		}
 		
-
-		int totalRow = 0; // 게시글 총 수를 담을 totalRow 변수 선언	
-		String totalRowSql = null; // 쿼리문 담을 totalRowSql 변수 선언
-		PreparedStatement totalRowStmt = null; // totalRowStmt 변수 선언
-		ResultSet totalRowRs = null; // totalRowRs 변수 선언
 		
 		
-		if(categoryName.equals("")){ // 만약 categoryName이 공백일 경우 
-			totalRowSql = "SELECT COUNT(*) cnt FROM board"; // board의 모든 List 값을 가져온다
-			totalRowStmt = conn.prepareStatement(totalRowSql); // select sql문 전송
-			totalRowRs = totalRowStmt.executeQuery(); // 쿼리문 실행
-
-		} else { // 만약 그 외 경우
-			totalRowSql = "SELECT COUNT(*) cnt FROM board WHERE category_name=?"; // board의 선택된 카테고리의 List 값을 가져온다
-			totalRowStmt = conn.prepareStatement(totalRowSql); // select sql문 전송
-			totalRowStmt.setString(1, categoryName); // 카테고리 선택값(?) set
-			totalRowRs = totalRowStmt.executeQuery(); // 쿼리문 실행
-			System.out.println("선택한 카테고리는 : " + categoryName);
-		}
-		
+		int totalRow = 0; // 게시글 총 수를 담을 totalRow 변수 선언
+		String totalRowSql = "SELECT COUNT(*) cnt FROM board"; // 쿼리문 선언
+		PreparedStatement totalRowStmt = conn.prepareStatement(totalRowSql); // select sql문 전송
+		ResultSet totalRowRs = totalRowStmt.executeQuery(); // 쿼리문 실행
 		if(totalRowRs.next()) { // db에서 반환받은 쿼리문 값 list 추가
 			totalRow = totalRowRs.getInt("cnt"); // cnt값 set
 			System.out.println(totalRow+" <-- totalRow"); // 디버깅
 		}
+
+		
 		
 		int lastPage = 0; // 마지막 페이지 담을 lastPage 변수 선언
 		if(totalRow % rowPerPage == 0) { // totalRow, rowPerpage 나머지가 0일 경우
@@ -154,6 +141,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
+
+
 	<!-- category별 게시글 링크 메뉴 -->
 	
 	<div class="row">
@@ -161,17 +150,9 @@
 	<div class="container" >
 		<ul class="list-group">
 			
-			<div style= "text-align : center">
+			<div style= "text-align : center;">
 			<br><h2>Category</h2><br>		
 			</div>
-			
-			<!-- 메인 메뉴 시작-->
-			<div style= "text-align : center">
-			<jsp:include page="/inc/upMenu.jsp" ></jsp:include><br>
-			</div>
-			<!-- include시 컨텍스명(프로젝트)을 명시하지 않는다. -->	
-			<!-- 메인 메뉴 끝 -->	
-				
 				
 			<%
 				for(HashMap<String, Object> m : categoryList) {
@@ -187,8 +168,7 @@
 		
 		</ul>
 		
-		
-	</div>
+	</div>	
 	</div>
 	<!-- 게시글 리스트 -->
 	<div class="col-sm-9 bg-light">
@@ -244,9 +224,7 @@
 			마지막 페이지 = 전체행 / rowPerPage
 		-->
 		<%
-			System.out.println("현재 페이지는 : " + currentPage);
-			System.out.println("전체 페이지는 : " + lastPage);
-			
+			//
 			if(currentPage < lastPage) {
 		%>
 				<ul class="pagination">
@@ -259,5 +237,7 @@
 	</div>
 	</div>
 	</div>
+
 </body>
 </html>
+

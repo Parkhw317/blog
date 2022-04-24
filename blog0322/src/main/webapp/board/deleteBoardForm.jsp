@@ -1,11 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 
-	request.setCharacterEncoding("utf-8"); // 한글 꺠지지 않게 인코딩
+	request.setCharacterEncoding("utf-8");
 
-	int boardNo = Integer.parseInt(request.getParameter("boardNo")); // boardNo 문자열을 숫자로 변환 후 int로 변수 선언 
+	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+
+	
 
 
+	/*
+	
+	request.setCharacterEncoding("utf-8");
+	
+	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+	String categoryName = request.getParameter("categoryName");
+	
+
+	System.out.println(request.getParameter("boardNo") + "◀◀◀◀◀ 게시글 번호");
+	System.out.println(request.getParameter("categoryName") + "◀◀◀◀◀ 게시글 이름");
+
+	
+	*/
+	
 %>
 
 <!DOCTYPE html>

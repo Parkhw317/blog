@@ -5,21 +5,69 @@
 <%@ page import = "java.util.*" %>
 <%
 		
-	request.setCharacterEncoding("utf-8"); // 한글 꺠지지 않게 인코딩 
+	request.setCharacterEncoding("utf-8");
 
-	int boardNo = Integer.parseInt(request.getParameter("boardNo")); // boardNo 문자열을 숫자로 변환 후 int로 변수 선언
-	String categoryName = request.getParameter("categoryName"); // catrgoryName 변수선언
+	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+	String categoryName = request.getParameter("categoryName");
 	
-	BoardDao boardDao = new BoardDao(); // boardDao 객체 생성 
+	BoardDao boardDao = new BoardDao();
 	
-	Board board = new Board(); // board 객체 생성 
+	Board board = new Board();
 	
-	board = boardDao.selectBoardOne(boardNo); // boardDao클래스의 selectBoardOne메소드에 boardNo를 파라미터로 넣음 
+	board = boardDao.selectBoardOne(boardNo);
 	
-	// boardDao클래스의 selectBoardCategoryName메소드에 categoryName을 파라미터로 넣어서 실행한 결과를 ArrayList에 넣어줌
-	ArrayList<String> list = boardDao.selectBoardCategoryName(categoryName); // 
+	ArrayList<String> list = boardDao.selectBoardCategoryName(categoryName);
+	
 	
 
+	/*
+	
+	int boardNo = Integer.parseInt(request.getParameter("boardNo"));	
+	Class.forName("org.mariadb.jdbc.Driver");
+	System.out.println("드라이버 로딩 성공");
+		
+	Connection conn = null;
+	String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장dk..
+	String dbuser = "root"; // 아이디 저장
+	String dbpw = "java1234"; // 비번 저장
+	conn = DriverManager.getConnection(dburl,dbuser,dbpw);
+	System.out.println(conn+"<--conn"); // 디버깅
+	
+	String boardOneSql = "select board_no boardNo, category_name categoryName, board_title boardTitle, board_content boardContent, board_pw boardPw, create_date createDate, update_date updateDate from board WHERE board_no = ?";
+	PreparedStatement stmt = conn.prepareStatement(boardOneSql);
+	stmt.setInt(1,boardNo); // 요청받아온 boardNo값 넣기
+	
+	ResultSet boardOneRs = stmt.executeQuery(); // boardOneRs boardSql 쿼리로 들고온 값 저장
+	System.out.println(boardOneRs + "<--boardOneRs"); // 디버깅
+	
+	Board board = null;
+	if(boardOneRs.next()) { // true값일때만 커서 옮기면서
+		board = new Board(); // board값 담을 새로운 리스트 생성
+		board.boardNo = boardOneRs.getInt("boardNo");
+		board.categoryName = boardOneRs.getString("categoryName");
+		board.boardTitle =  boardOneRs.getString("boardTitle");
+		board.boardContent = boardOneRs.getString("boardContent");
+		board.createDate =  boardOneRs.getString("createDate");
+		board.updateDate =  boardOneRs.getString("updateDate");
+	}
+	
+	// category 목록
+	String categorySql = "SELECT category_name categoryName FROM category";
+	PreparedStatement categoryStmt = conn.prepareStatement(categorySql);
+	ResultSet categoryRs = categoryStmt.executeQuery();
+	ArrayList<String> categoryList = new ArrayList<String>();
+	while(categoryRs.next()) { // categoryRs -> categoryList 
+		categoryList.add(categoryRs.getString("categoryName"));
+	}
+	conn.close();
+	/*
+		UDATE board SET
+			category_name = ?,
+			board_title = ?,
+			board_content = ?,
+			update_date = NOW()
+		WHERE board_no = ? AND board_pw = ?
+	*/
 %>
 <!DOCTYPE html>
 <html>

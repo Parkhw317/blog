@@ -6,27 +6,27 @@
 
 <%
 
-	request.setCharacterEncoding("utf-8"); // 한글 꺠지지 않게 인코딩 
+	request.setCharacterEncoding("utf-8");
 
-	GuestbookDao guestbookDao = new GuestbookDao(); // guestbookDao 객체 생성
+	GuestbookDao guestbookDao = new GuestbookDao();
 	
-	String writer = request.getParameter("writer"); // writer 변수선언
-	String guestbookPw = request.getParameter("guestbookPw"); // guestbookPw 변수선언
-	String guestbookContent = request.getParameter("guestbookContent"); // guestbookContent 변수선언
-	String createDate = request.getParameter("createDate"); // createDate 변수선언
+	String writer = request.getParameter("writer");
+	String guestbookPw = request.getParameter("guestbookPw");
+	String guestbookContent = request.getParameter("guestbookContent");
+	String createDate = request.getParameter("createDate");
 	
 	
-	Guestbook guestbook = new Guestbook(); // guestbook 객체 생성
-	guestbook.setWriter(writer); // guestbook 객체 내에 writer 값 set
-	guestbook.setGuestbookPw(guestbookPw); // guestbook 객체 내에 guestbookPw 값 set
-	guestbook.setGuestbookContent(guestbookContent); // guestbook 객체 내에 guestbookContent 값 set
-	guestbook.setCreateDate(createDate);// guestbook 객체 내에 createDate 값 set
+	Guestbook guestbook = new Guestbook();
+	guestbook.writer = writer;
+	guestbook.guestbookPw = guestbookPw;
+	guestbook.guestbookContent = guestbookContent;
+	guestbook.createDate = createDate;
 	
 
-	guestbookDao.insertGuestbook(guestbook); //  guestbookDao클래스의 insertGuestbook메소드에 guestbook를 마라미터로 넣어줌
+	guestbookDao.insertGuestbook(guestbook);
 	
 	
-	response.sendRedirect(request.getContextPath()+"/guestbook/guestbookList.jsp"); // guestbookList 페이지로 이동
+	response.sendRedirect(request.getContextPath()+"/guestbook/guestbookList.jsp");
 	
 	
 	
