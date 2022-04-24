@@ -58,7 +58,7 @@ public class GuestbookDao {
 		String dbuser = "root";
 		String dbpw = "java1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); // DB연결
-		
+
 		// 연결할 쿼리문 작성
 		String sql = "UPDATE guestbook SET guestbook_content=? WHERE guestbook_no=? AND guestbook_pw=?";
 		stmt = conn.prepareStatement(sql); // update sql문 전송
