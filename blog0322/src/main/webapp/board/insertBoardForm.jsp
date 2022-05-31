@@ -98,8 +98,6 @@
 					<br><button type="submit" class="btn btn-info btn-sm">board 입력</button>
 				</td>
 			</tr>
-         
-         
       </table>
    </form>
    </div>

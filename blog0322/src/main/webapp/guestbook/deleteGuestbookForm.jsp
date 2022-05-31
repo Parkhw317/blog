@@ -17,11 +17,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
-<body>
-	<h2>게시글 삭제</h2>
+<body class = "container">
+	<div class="container p-3 my-3 bg-primary text-white">
+	<h2 align="center">게시글 삭제</h2>
+	</div>
 	<form method="post" action="<%=request.getContextPath()%>/guestbook/deleteGuestbookAction.jsp">
-		<table border = "1">
+		<table class="table">
 			<tr>
 				<td>방명록 번호</td>
 				<td><input type="text" name="guestbookNo" value="<%=guestbookNo%>" readonly="readonly"></td>
@@ -35,7 +38,8 @@
 		
 		</table>
 		
-		<button type = "submit">삭제</button>
+		<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp" class="btn btn-secondary btn-sm" role="button">이전</a>
+		<button type="submit" class="btn btn-outline-primary btn-sm">삭제</button>
 	</form>
 	
 

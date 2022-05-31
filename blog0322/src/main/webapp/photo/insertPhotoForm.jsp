@@ -4,9 +4,12 @@
 <head>
 <meta charset="UTF-8">
 <title>insertPhotoForm.jsp</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
-<body>
-	<h1>이미지 등록</h1>
+<body class = "container">
+	<div class="container p-3 my-3 bg-success text-white">
+	<h1 align="center">이미지 등록</h1>
+	</div>
 	<!--
 		1) form태그안에 값을 넘기는 기본값은 문자열이다
 		2) 파일을 넘길 수 없다. 기본값(application/x-www-form-urlencoded)을 변경해야 한다.
@@ -16,7 +19,7 @@
 		6) 외부 라이브러리(cos.jar)를 사용해서 복잡한 코드를 간단하게 구현하자
 		-->
 	<form action="<%=request.getContextPath()%>/photo/insertPhotoAction.jsp" method="post" enctype="multipart/form-data">
-		<table border="1">
+		<table class="table">
 			<tr>
 				<td>이미지파일</td>
 				<td><input type="file" name="photo"></td>
@@ -30,7 +33,8 @@
 				<td><input type="text" name="writer"></td>
 			</tr>
 		</table>
-		<button type="submit">이미지 등록</button>
+		<a href="<%=request.getContextPath()%>/photo/photoList.jsp" class="btn btn-secondary btn-sm" role="button">이전</a>
+		<button type="submit" class="btn btn-outline-success btn-sm">이미지 등록</button>
 	</form>
 </body>
 </html>

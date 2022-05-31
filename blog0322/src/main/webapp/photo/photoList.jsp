@@ -15,15 +15,19 @@
 <head>
 <meta charset="UTF-8">
 <title>photoList</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
-<body>
+<body class = "container">
 	<!-- 메인 메뉴 시작-->
+	<br>
 	<jsp:include page="/inc/upMenu.jsp"></jsp:include>
 	<!-- include시 컨텍스명(프로젝트이름)을 명시하지 않는다. -->
 	<!-- 메인 메뉴 끝 -->
 	
-	<h1>이미지 목록</h1>
-	<table border="1">
+	<div class="container p-3 my-3 bg-success text-white">
+	<h1 align="center">이미지 목록</h1>
+	</div>
+	<table class="table">
 		<tr>
 			<%
 				// 한행의 5개의 이미지 출력(tr안에 td가 5개)
@@ -53,7 +57,7 @@
 			%>
 						<td>
 							<a href="<%=request.getContextPath()%>/photo/selectPhotoOne.jsp?photoNo=<%=list.get(i).photoNo%>">
-								<img src="<%=request.getContextPath()%>/upload/<%=list.get(i).photoName%>" width="100" height="100">
+								<img src="<%=request.getContextPath()%>/upload/<%=list.get(i).photoName%>" width="170" height="170">
 								<!--  상세보기에서는 원본이미지 크기로 -->
 							</a>
 						</td>
@@ -65,9 +69,10 @@
 					}
 				}
 			%>
-			<div>
+			<div align="right">
 		<a href="<%=request.getContextPath()%>/photo/insertPhotoForm.jsp" class="btn btn-outline-info btn-sm" role="botton" >사진 업로드</a>
 			</div>
+			<br>
 			
 			
 		</tr>

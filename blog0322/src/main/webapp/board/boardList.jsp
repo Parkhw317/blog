@@ -140,43 +140,35 @@
 <title>boardList</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
-<body>
-
+<body class = "container">
+	
 
 	<!-- category별 게시글 링크 메뉴 -->
-	
-	<div class="row">
-	<div class="col-sm-3 bg-light">
-	<div class="container" >
-		<ul class="list-group">
+	<br>
+	<jsp:include page="/inc/upMenu.jsp"></jsp:include>
 			
-			<div style= "text-align : center;">
-			<br><h2>Category</h2><br>		
-			</div>
-				
+			<div class="container p-3 my-3 border">
+			<h1 align="center">Category</h1><br>
+			
+			<div align="center">
 			<%
 				for(HashMap<String, Object> m : categoryList) {
 			%>
-					
-					<li class="list-group-item list-group-item-action">
-						<a href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=m.get("categoryName")%>"><%=m.get("categoryName")%>&nbsp;<span class="badge badge-info"><%=m.get("cnt")%></span></a>
-					</li>
-					
+					<div class="btn-group" class="btn btn-primary">	
+						<a href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=m.get("categoryName")%>" class="btn btn-outline-secondary" role="button"><%=m.get("categoryName")%>&nbsp;<span class="badge badge-warning"><%=m.get("cnt")%></span></a>
+					</div>
 			<%		
 				}
 			%>
-		
-		</ul>
-		
-	</div>	
-	</div>
+			</div>
+			</div>
+			<br><br>
 	<!-- 게시글 리스트 -->
-	<div class="col-sm-9 bg-light">
-	<br><h2>게시글 목록</h2><h6>(total : <%=totalRow%>)</h6><br>
-	<div>
-		<a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp" class="btn btn-outline-info btn-sm" role="botton" >게시글 입력</a>
-	</div>
-	<br><table class = "table-bordered" style="text-align : center;" >
+	<h2 align="center">게시글 목록</h2><h6 align="center">(total : <%=totalRow%>)</h6>
+		<div align="right">
+		<a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp" class="btn btn-outline-info btn-sm" role="botton" >게시글 입력</a><br><br>
+		</div>
+	<table class="table" style="text-align:center;" >
 		<thead>
 			<tr class="table-active">
 				<th>categoryName</th>
@@ -200,6 +192,7 @@
 	</table>
 	
 	<br>
+	<div align="right">
 	<div class="btn-group">
 		<!-- 페이지가 만약 10페이지였다면 이전을 누르면 9페이지, 다음을 누르면 11페이지 -->
 		<%
@@ -236,8 +229,6 @@
 		%>
 	</div>
 	</div>
-	</div>
-
 </body>
 </html>
 
