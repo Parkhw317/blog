@@ -48,61 +48,47 @@
 <meta charset="UTF-8">
 <title>insertBoardForm</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 <body>
 	<div class="row">
-	<div class="col-sm-12 bg-light">
-<div class="container">
-   <br><h2>게시글 입력</h2><br>
-   <form method="post" action="<%=request.getContextPath()%>/board/insertBoardAction.jsp">
-      <table class = "table-bordered">
-         <tr>
-            <td>cetegoryName</td>
-            <td>
-               <select name="categoryName">
-                  <%
-                  
-                     for(String s : list) {
-                  %>
-                        <option value="<%=s%>"><%=s%></option> 
-             
-                  <%      
-                     }
-                  %>             
-               </select>
-            
-            
-            
-         </tr>
-         <tr>
-				<td>boardTitle</td>
-				<td>
-				<input name="boardTitle" type="text" class="form-control">
-				</td>
-		</tr>
-			<tr>
-				<td>boardContent</td>
-				<td>
-					<textarea name="boardContent" rows="5" cols="80" class="form-control"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td>boardPw</td>
-				<td>
-				<input name="boardPw" type="password" class="form-control">
-				</td>
-			</tr>
-        	 <tr>
-				<td colspan="2">
-					<br><button type="submit" class="btn btn-info btn-sm">board 입력</button>
-				</td>
-			</tr>
-      </table>
-   </form>
-   </div>
-   </div>
-   </div>
+		<div class="col-sm-12 bg-light">
+			<div class="container">
+				<br><h2>게시글 입력</h2><br>
+				<form method="post" action="<%=request.getContextPath()%>/board/insertBoardAction.jsp">
+					<table class="table-bordered">
+						<tr>
+							<td>cetegoryName</td>
+							<td><select name="categoryName">
+									<%
+					                     for(String s : list) {
+					                 %>
+										<option value="<%=s%>"><%=s%></option>
+									<%      
+					                     }
+					                %>
+							</select>
+						</tr>
+						<tr>
+							<td>boardTitle</td>
+							<td><input name="boardTitle" type="text" class="form-control"></td>
+						</tr>
+						<tr>
+							<td>boardContent</td>
+							<td><textarea name="boardContent" rows="5" cols="80" class="form-control"></textarea></td>
+						</tr>
+						<tr>
+							<td>boardPw</td>
+							<td><input name="boardPw" type="password" class="form-control"></td>
+						</tr>
+						<tr>
+							<td colspan="2"><br>
+							<button type="submit" class="btn btn-info btn-sm">board 입력</button></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
 

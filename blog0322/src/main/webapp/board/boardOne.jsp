@@ -12,7 +12,7 @@
 	
 	String dburl = "jdbc:mariadb://localhost:3306/blog"; // 마리아DB 주소
 	String dbuser = "root"; // 마리아DB 아이디
-	String dbpw = "java1234"; // 마리아DB 패스워드
+	String dbpw = "mariadb1234"; // 마리아DB 패스워드
 	Connection conn = DriverManager.getConnection(dburl, dbuser, dbpw); // 마리아DB 주소, 아이디, 패스워드 변수 conn값에 입력
 	System.out.println(conn + "◀◀◀◀◀ conn"); // 디버깅
 	
@@ -42,66 +42,62 @@
 	}
 	
 	conn.close(); // conn 반환
-%>	
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>boardOne</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
 	<div class="row">
-	<div class="col-sm-12 bg-light">
-	<div class="container">
-	<br><h2>게시글 상세보기</h2><br>
-	<table class = "table-bordered" >
-	
-		
-		<tr>
-			<td>boardNo</td>
-			<td><%=board.getBoardNo()%></td>
-		</tr>
-		<tr>
-			<td>categoryName</td>
-			<td><%=board.getCategoryName()%></td>
-		</tr>
-		<tr>
-			<td>boardTitle</td>
-			<td><%=board.getBoardTitle()%></td>
-		</tr>
-		<tr>
-			<td>boardContent</td>
-			<td><%=board.getBoardContent()%></td>
-		</tr>
-		<tr>
-			<td>createDate</td>
-			<td><%=board.getCreateDate()%></td>
-		</tr>
-		<tr>
-			<td>updateDate</td>
-			<td><%=board.getUpdateDate()%></td>
-		</tr>
-	</table>
-	
-	<br>
-	<div class="btn-group">
-		<ul class="pagination">
-		<li class="page-item">
-			<a href="<%=request.getContextPath()%>/board/updateBoardForm.jsp?boardNo=<%= board.getBoardNo() %>"class="btn btn-info btn-sm" role="button">수정</a>
-		</li>
-  		</ul>	
-			
-		<ul class="pagination">
-		<li class="page-item">	
-			<a href="<%=request.getContextPath()%>/board/deleteBoardForm.jsp?boardNo=<%= board.getBoardNo()%>"class="btn btn-info btn-sm" role="button">삭제</a>
-  		</li>
-  		</ul>
-    </div>
-    </div>
+		<div class="col-sm-12 bg-light">
+			<div class="container">
+				<br>
+				<h2>게시글 상세보기</h2>
+				<br>
+				<table class="table-bordered">
+					<tr>
+						<td>boardNo</td>
+						<td><%=board.getBoardNo()%></td>
+					</tr>
+					<tr>
+						<td>categoryName</td>
+						<td><%=board.getCategoryName()%></td>
+					</tr>
+					<tr>
+						<td>boardTitle</td>
+						<td><%=board.getBoardTitle()%></td>
+					</tr>
+					<tr>
+						<td>boardContent</td>
+						<td><%=board.getBoardContent()%></td>
+					</tr>
+					<tr>
+						<td>createDate</td>
+						<td><%=board.getCreateDate()%></td>
+					</tr>
+					<tr>
+						<td>updateDate</td>
+						<td><%=board.getUpdateDate()%></td>
+					</tr>
+				</table>
+
+				<br>
+				<div class="btn-group">
+					<ul class="pagination">
+						<li class="page-item"><a href="<%=request.getContextPath()%>/board/updateBoardForm.jsp?boardNo=<%=board.getBoardNo()%>" class="btn btn-info btn-sm" role="button">수정</a></li>
+					</ul>
+
+					<ul class="pagination">
+						<li class="page-item"><a href="<%=request.getContextPath()%>/board/deleteBoardForm.jsp?boardNo=<%=board.getBoardNo()%>" class="btn btn-info btn-sm" role="button">삭제</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</div>
-	</div>
-	
 </body>
 </html>
 

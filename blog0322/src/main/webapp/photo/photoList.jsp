@@ -17,15 +17,14 @@
 <title>photoList</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
-<body class = "container">
+<body class="container">
 	<!-- 메인 메뉴 시작-->
-	<br>
-	<jsp:include page="/inc/upMenu.jsp"></jsp:include>
+	<br><jsp:include page="/inc/upMenu.jsp"></jsp:include>
 	<!-- include시 컨텍스명(프로젝트이름)을 명시하지 않는다. -->
 	<!-- 메인 메뉴 끝 -->
-	
+
 	<div class="container p-3 my-3 bg-success text-white">
-	<h1 align="center">이미지 목록</h1>
+		<h1 align="center">이미지 목록</h1>
 	</div>
 	<table class="table">
 		<tr>
@@ -49,32 +48,26 @@
 					// tr을 닫고 새로운 tr 시작
 					if(i!=0 && i%5==0) { // 5일때(0을 제외한 5의배수일때) 
 			%>
-						</tr><tr>
+		</tr>
+		<tr>
 			<%			
 					}
-				
 					if(i<list.size()) {
 			%>
-						<td>
-							<a href="<%=request.getContextPath()%>/photo/selectPhotoOne.jsp?photoNo=<%=list.get(i).photoNo%>">
-								<img src="<%=request.getContextPath()%>/upload/<%=list.get(i).photoName%>" width="170" height="170">
-								<!--  상세보기에서는 원본이미지 크기로 -->
-							</a>
-						</td>
+			<td><a href="<%=request.getContextPath()%>/photo/selectPhotoOne.jsp?photoNo=<%=list.get(i).photoNo%>">
+					<img src="<%=request.getContextPath()%>/upload/<%=list.get(i).photoName%>" width="170" height="170"> <!--  상세보기에서는 원본이미지 크기로 -->
+			</a></td>
 			<%
 					} else {
 			%>
-						<td>&nbsp;</td>
+			<td>&nbsp;</td>
 			<%			
 					}
 				}
 			%>
 			<div align="right">
-		<a href="<%=request.getContextPath()%>/photo/insertPhotoForm.jsp" class="btn btn-outline-info btn-sm" role="botton" >사진 업로드</a>
-			</div>
-			<br>
-			
-			
+				<a href="<%=request.getContextPath()%>/photo/insertPhotoForm.jsp" class="btn btn-outline-info btn-sm" role="botton">사진 업로드</a>
+			</div><br>
 		</tr>
 	</table>
 </body>

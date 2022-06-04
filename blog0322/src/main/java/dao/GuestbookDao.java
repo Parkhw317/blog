@@ -18,7 +18,7 @@ public class GuestbookDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog";
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); 
 		
 		String sql = "SELECT guestbook_no guestbookNo, guestbook_content guestbookContent, writer FROM guestbook WHERE guestbook_no = ?";
@@ -51,7 +51,7 @@ public class GuestbookDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog";
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); // DB연결
 
 		// 연결할 쿼리문 작성
@@ -86,7 +86,7 @@ public class GuestbookDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; 
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); 
 		
 		String sql = "DELETE FROM guestbook WHERE guestbook_no=? AND guestbook_pw=?";
@@ -122,7 +122,7 @@ public class GuestbookDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog";
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		String sql = "INSERT INTO guestbook(guestbook_content, writer,guestbook_pw, create_date, update_date) VALUES (?,?,?,NOW(),now());";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); 
 		stmt = conn.prepareStatement(sql);
@@ -158,7 +158,7 @@ public class GuestbookDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog";
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		
 		String sql = "SELECT COUNT(*) cnt FROM guestbook";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); 
@@ -185,7 +185,7 @@ public class GuestbookDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog";
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		/*
 		 SELECT guestbook_no guestbookNo, guestbook_content guestbookContent, writer, create_date createDate 
 		 FROM guestbook 

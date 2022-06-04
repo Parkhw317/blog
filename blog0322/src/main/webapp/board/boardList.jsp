@@ -49,7 +49,7 @@
 	Connection conn = null; // 자바와 DB를 연결을 위해 Connection 사용, conn 변수값은 빈상자.
 	String dburl = "jdbc:mariadb://localhost:3306/blog"; // 처음 mariaDB설치할때 3306포트, blog 테이블로 연결
 	String dbuser = "root"; // mariaDB에 설정해놓은 유저이름
-	String dbpw = "java1234"; // mariaDB에 설정해놓은 패스워드
+	String dbpw = "mariadb1234"; // mariaDB에 설정해놓은 패스워드
 	conn = DriverManager.getConnection(dburl, dbuser, dbpw); // "jdbc:mariadb://localhost:3306/blog" , "root" , "java1234"
 	System.out.println(conn + " <-- conn"); // conn 에 대한 디버깅
 	
@@ -140,35 +140,37 @@
 <title>boardList</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
-<body class = "container">
-	
+<body class="container">
 
 	<!-- category별 게시글 링크 메뉴 -->
-	<br>
-	<jsp:include page="/inc/upMenu.jsp"></jsp:include>
+	<br><jsp:include page="/inc/upMenu.jsp"></jsp:include>
+	<div class="container p-3 my-3 border">
+		<h1 align="center">Category</h1><br>
+		<div align="center">
 			
-			<div class="container p-3 my-3 border">
-			<h1 align="center">Category</h1><br>
-			
-			<div align="center">
 			<%
-				for(HashMap<String, Object> m : categoryList) {
+			for (HashMap<String, Object> m : categoryList) {
 			%>
-					<div class="btn-group" class="btn btn-primary">	
-						<a href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=m.get("categoryName")%>" class="btn btn-outline-secondary" role="button"><%=m.get("categoryName")%>&nbsp;<span class="badge badge-warning"><%=m.get("cnt")%></span></a>
-					</div>
-			<%		
-				}
+			
+			<div class="btn-group" class="btn btn-primary">
+				<a href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=m.get("categoryName")%>" class="btn btn-outline-secondary" role="button"><%=m.get("categoryName")%>&nbsp;<span class="badge badge-warning"><%=m.get("cnt")%></span></a>
+			</div>
+			
+			<%
+			}
 			%>
-			</div>
-			</div>
-			<br><br>
-	<!-- 게시글 리스트 -->
-	<h2 align="center">게시글 목록</h2><h6 align="center">(total : <%=totalRow%>)</h6>
-		<div align="right">
-		<a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp" class="btn btn-outline-info btn-sm" role="botton" >게시글 입력</a><br><br>
 		</div>
-	<table class="table" style="text-align:center;" >
+	</div><br><br>
+	
+	<!-- 게시글 리스트 -->
+	<h2 align="center">게시글 목록</h2>
+	<h6 align="center">
+		(total : <%=totalRow%>)
+	</h6>
+	<div align="right">
+		<a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp" class="btn btn-outline-info btn-sm" role="botton">게시글 입력</a><br><br>
+	</div>
+	<table class="table" style="text-align: center;">
 		<thead>
 			<tr class="table-active">
 				<th>categoryName</th>
@@ -178,36 +180,38 @@
 		</thead>
 		<tbody>
 			<%
-				for(Board b : boardList) {
+			for (Board b : boardList) {
 			%>
-					<tr>
-						<td><%=b.getCategoryName()%></td>
-						<td><a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=b.getBoardNo()%>" ><%=b.getBoardTitle()%></a></td>
-						<td><%=b.getCreateDate()%></td>
-					</tr>
-			<%		
-				}
+		
+			<tr>
+				<td><%=b.getCategoryName()%></td>
+				<td><a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=b.getBoardNo()%>"><%=b.getBoardTitle()%></a></td>
+				<td><%=b.getCreateDate()%></td>
+			</tr>
+			
+			<%
+			}
 			%>
 		</tbody>
 	</table>
-	
-	<br>
-	<div align="right">
-	<div class="btn-group">
-		<!-- 페이지가 만약 10페이지였다면 이전을 누르면 9페이지, 다음을 누르면 11페이지 -->
-		<%
-			if(currentPage > 1) { // 현재페이지가 1이면 이전페이지가 존재해서는 안된다.
-		%>
-				<ul class="pagination">
-				<li class="page-item">
-				<a href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage-1%>&categoryName=<%=categoryName%>" class="btn btn-info btn-sm" role="button">이전</a>
-				</li></ul>
-				
-		<%	
-			}
-		%>
+
+	<br><div align="right">
+		<div class="btn-group">
+			<!-- 페이지가 만약 10페이지였다면 이전을 누르면 9페이지, 다음을 누르면 11페이지 -->
 		
-		<!--  
+			<%
+			if (currentPage > 1) { // 현재페이지가 1이면 이전페이지가 존재해서는 안된다.
+			%>
+		
+			<ul class="pagination">
+				<li class="page-item"><a href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage - 1%>&categoryName=<%=categoryName%>" class="btn btn-info btn-sm" role="button">이전</a></li>
+			</ul>
+
+			<%
+			}
+			%>
+
+			<!--  
 			전체행			마지막 페이지 ? 
 			10개 				1
 			11,12,13 ~ 20		2
@@ -216,18 +220,17 @@
 		
 			마지막 페이지 = 전체행 / rowPerPage
 		-->
-		<%
+			<%
 			//
-			if(currentPage < lastPage) {
-		%>
-				<ul class="pagination">
-				<li class="page-item">
-				<a href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage+1%>&categoryName=<%=categoryName%>" class="btn btn-info btn-sm" role="button">다음</a>
-				</li></ul>
-		<%		
+			if (currentPage < lastPage) {
+			%>
+			<ul class="pagination">
+				<li class="page-item"><a href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage + 1%>&categoryName=<%=categoryName%>" class="btn btn-info btn-sm" role="button">다음</a></li>
+			</ul>
+			<%
 			}
-		%>
-	</div>
+			%>
+		</div>
 	</div>
 </body>
 </html>

@@ -20,7 +20,7 @@ import vo.Board;
 			// maria DB url,user,pw 등 선언
 			String dburl = "jdbc:mariadb://localhost:3306/blog";
 			String dbuser = "root";
-			String dbpw = "java1234";
+			String dbpw = "mariadb1234";
 			
 			// 연결할 쿼리문 작성
 			String sql = "INSERT INTO board (category_name, board_title, board_content, board_pw, create_date, update_Date) VALUES (?, ?, ?, ?, NOW(), NOW())";
@@ -56,7 +56,7 @@ import vo.Board;
 			// maria DB url,user,pw 등 선언
 			String dburl = "jdbc:mariadb://localhost:3306/blog";
 			String dbuser = "root";
-			String dbpw = "java1234";
+			String dbpw = "mariadb1234";
 			
 			// 연결할 쿼리문 작성
 			String sql = "SELECT category_name categoryName FROM category ORDER BY category_name ASC";
@@ -89,7 +89,7 @@ import vo.Board;
 			// maria DB url,user,pw 등 선언
 			String dburl = "jdbc:mariadb://localhost:3306/blog";
 			String dbuser = "root";
-			String dbpw = "java1234";
+			String dbpw = "mariadb1234";
 			conn = DriverManager.getConnection(dburl, dbuser, dbpw); // DB연결
 			
 			// 연결할 쿼리문 작성
@@ -128,7 +128,7 @@ import vo.Board;
 			// maria DB url,user,pw 등 선언
 			String dburl = "jdbc:mariadb://localhost:3306/blog";
 			String dbuser = "root";
-			String dbpw = "java1234";
+			String dbpw = "mariadb1234";
 			conn = DriverManager.getConnection(dburl, dbuser, dbpw); // DB연결
 			
 			// 연결할 쿼리문 작성
@@ -170,7 +170,7 @@ import vo.Board;
 			// maria DB url,user,pw 등 선언
 			String dburl = "jdbc:mariadb://localhost:3306/blog"; 
 			String dbuser = "root";
-			String dbpw = "java1234";
+			String dbpw = "mariadb1234";
 			conn = DriverManager.getConnection(dburl, dbuser, dbpw); // DB연결
 			
 			// 연결할 쿼리문 작성

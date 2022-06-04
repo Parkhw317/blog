@@ -45,6 +45,9 @@
 	<!-- 메인 메뉴 끝 -->
 <br>
 <br>
+
+
+
 <% 
 	for(Guestbook g : list) {
 %>
@@ -61,18 +64,24 @@
 			</tr>
 		</table>
 		<div>
-			<a href="<%=request.getContextPath()%>/guestbook/updateGuestbookForm.jsp?guestbookNo=<%=g.guestbookNo%>" class="btn btn-primary btn-sm" role="button">수정</a>
-			<a href="<%=request.getContextPath()%>/guestbook/deleteGuestbookForm.jsp?guestbookNo=<%=g.guestbookNo%>" class="btn btn-warning btn-sm" role="button">삭제</a>
+			<a href="<%=request.getContextPath()%>/guestbook/updateGuestbookForm.jsp?guestbookNo=<%=g.guestbookNo%>" class="btn btn-outline-primary btn-sm" role="button">수정</a>
+			<a href="<%=request.getContextPath()%>/guestbook/deleteGuestbookForm.jsp?guestbookNo=<%=g.guestbookNo%>" class="btn btn-outline-warning btn-sm" role="button">삭제</a>
 		</div>
-<%	
+	
+	
+<%
 	}
+%>
+	
+		
+	<div align="right">	
+<%	
 	
 	if(currentPage > 1) {
 
 %>
+	<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage-1%>" class="btn btn-primary btn-sm">이전</a>
 
-	<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage-1%>">이전</a>
-	
 <%
 	}
 
@@ -80,13 +89,14 @@
 	if(currentPage< lastPage) {
 %>	
 	
-	<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage+1%>">다음</a>
-
+	<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage+1%>" class="btn btn-warning btn-sm">다음</a>
+	</div>
 <%
 
 	}
 
 %>
+	
 	</div>
 	<!-- 방명록 입력 -->
 	<div class="container p-5 my-5 border">

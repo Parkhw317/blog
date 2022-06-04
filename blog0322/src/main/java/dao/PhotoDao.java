@@ -18,7 +18,7 @@ public class PhotoDao {
 				
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; 
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); 
 		
 		String sql = "INSERT INTO photo (photo_name, photo_original_name,photo_type,photo_pw,writer,create_date,update_date) VALUES (?, ?, ?, ?, ?, NOW(), NOW())";
@@ -55,7 +55,7 @@ public class PhotoDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; 
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); 
 		
 		String sql = "DELETE FROM photo WHERE photo_no=? AND photo_pw=?";
@@ -87,7 +87,7 @@ public class PhotoDao {
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/blog","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/blog","root","mariadb1234");
 			String sql = "SELECT photo_no photoNo, photo_name photoName FROM photo ORDER BY create_date DESC LIMIT ?,?";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, beginRow);
@@ -118,7 +118,7 @@ public class PhotoDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 마리아DB 주소
 		String dbuser = "root"; // 마리아DB 아이디
-		String dbpw = "java1234"; // 마리아DB 패스워드
+		String dbpw = "mariadb1234"; // 마리아DB 패스워드
 		Connection conn = DriverManager.getConnection(dburl, dbuser, dbpw); // 마리아DB 주소, 아이디, 패스워드 변수 conn값에 입력
 		System.out.println(conn + "◀◀◀◀◀ conn"); // 디버깅
 		
@@ -161,7 +161,7 @@ public class PhotoDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 마리아DB 주소
 		String dbuser = "root"; // 마리아DB 아이디
-		String dbpw = "java1234"; // 마리아DB 패스워드
+		String dbpw = "mariadb1234"; // 마리아DB 패스워드
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); // 마리아DB 주소, 아이디, 패스워드 변수 conn값에 입력
 		System.out.println(conn + "◀◀◀◀◀ conn"); // 디버깅
 		

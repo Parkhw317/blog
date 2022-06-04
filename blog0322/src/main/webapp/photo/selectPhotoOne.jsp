@@ -33,8 +33,6 @@
 	<div class="container">
 	<br><h2>사진내역 상세보기</h2><br>
 	<table class = "table-bordered" >
-	
-		
 		<tr>
 			<td>photoNo</td>
 			<td><%=photo.photoNo%></td>
@@ -60,8 +58,6 @@
 			<td><%=photo.updateDate%></td>
 		</tr>
 	</table>
-	
-	
 		<ul class="pagination">
 		<li class="page-item">	
 			<a href="<%=request.getContextPath()%>/photo/deletePhotoForm.jsp?photoNo=<%= photo.photoNo %>"class="btn btn-info btn-sm" role="button">삭제</a>
